@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>近期台灣演唱會 — 售票資訊看板</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=Noto+Serif+TC:wght@600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #0B0B10;
+    --bg-soft: #15141C;
+    --bg-raised: #1C1A24;
+    --amber: #FFB238;
+    --magenta: #FF3E6C;
+    --cream: #F2ECD9;
+    --ink: #201C22;
+    --text: #F5F3EE;
+    --text-muted: #9C98A8;
+    --line: #322F3B;
+    --ok: #4FBE83;
+    --wait: #FFB238;
+    --sold: #7A7686;
+    --tba: #5C5866;
+    --maxw: 920px;
+  }
+
+  *{ box-sizing: border-box; }
+  html{ scroll-behavior: smooth; }
+  body{
+    margin:0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Noto Sans TC', sans-serif;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  @media (prefers-reduced-motion: reduce){
+    *{ animation: none !important; transition: none !important; }
+  }
+
+  a{ color: inherit; }
+
+  /* ---------- top bar ---------- */
+  .topbar{
+    position: sticky; top:0; z-index: 50;
+    display:flex; align-items:center; justify-content:space-between;
+    padding: 16px 24px;
+    background: rgba(11,11,16,0.86);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--line);
+  }
+  .topbar .brand{
+    font-weight:900; font-size: 15px; letter-spacing: 0.02em;
+  }
+  .topbar .brand span{ color: var(--amber); }
+  .topbar .updated{
+    font-size: 12px; color: var(--text-muted);
+  }
+  .topbar .updated b{ color: var(--ok); font-weight:700; }
+
+  /* ---------- hero ---------- */
+  .hero{
+    position: relative;
+    padding: 76px 24px 56px;
+    overflow: hidden;
+    background:
+      radial-gradient(ellipse 520px 320px at 18% -10%, rgba(255,178,56,0.20), transparent 60%),
+      radial-gradient(ellipse 620px 380px at 88% 8%, rgba(255,62,108,0.16), transparent 60%),
+      var(--bg);
+  }
+  .hero::before{
+    content:"";
+    position:absolute; inset:0;
+    background: repeating-linear-gradient(180deg, rgba(255,255,255,0.025) 0px, rgba(255,255,255,0.025) 1px, transparent 1px, transparent 3px);
+    pointer-events:none;
+    animation: flicker 6s ease-in-out infinite;
+  }
+  @keyframes flicker{
+    0%,100%{ opacity: 1; }
+    50%{ opacity: 0.6; }
+  }
+  .hero-inner{ position:relative; max-width: var(--maxw); margin: 0 auto; }
+  .hero-eyebrow{
+    font-size: 13px; color: var(--text-muted); margin: 0 0 18px;
+  }
+  .marquee{
+    margin: 0; padding:0; list-style:none;
+    display:flex; flex-direction:column; gap: 2px;
+  }
+  .marquee li{
+    display:flex; align-items:baseline; gap: 14px;
+    font-weight: 900; letter-spacing: -0.01em;
+    line-height: 0.98;
+  }
+  .marquee .rank{
+    font-size: 14px; color: var(--text-muted); font-weight: 500;
+    width: 22px; flex-shrink:0;
+  }
+  .marquee .name{
+    background: linear-gradient(90deg, #fff, var(--text-muted) 130%);
+    -webkit-background-clip:text; background-clip:text; color:transparent;
+  }
+  .marquee li:nth-child(1) .name{ font-size: clamp(42px, 9vw, 84px); background:linear-gradient(90deg,#fff,var(--amber) 140%); -webkit-background-clip:text; background-clip:text; }
+  .marquee li:nth-child(2) .name{ font-size: clamp(34px, 7vw, 66px); }
+  .marquee li:nth-child(3) .name{ font-size: clamp(28px, 5.6vw, 52px); }
+  .marquee li:nth-child(4) .name{ font-size: clamp(24px, 4.6vw, 42px); color: var(--text-muted); background:none; -webkit-text-fill-color: var(--text-muted); }
+  .marquee .when{
+    font-family:'Noto Sans TC'; font-weight: 500; font-size: 13px;
+    color: var(--text-muted); white-space:nowrap;
+  }
+  .hero-note{
+    margin-top: 28px; font-size: 14px; color: var(--text-muted); max-width: 60ch;
+  }
+  .hero-note strong{ color: var(--text); font-weight:700; }
+
+  /* ---------- controls ---------- */
+  .controls{
+    max-width: var(--maxw); margin: 0 auto; padding: 28px 24px 0;
+    display:flex; flex-wrap:wrap; gap:10px; align-items:center;
+  }
+  .chip{
+    border: 1px solid var(--line); background: var(--bg-soft);
+    color: var(--text-muted); font-size: 13px; font-weight: 700;
+    padding: 8px 14px; border-radius: 999px; cursor:pointer;
+    transition: border-color .15s ease, color .15s ease, background .15s ease;
+  }
+  .chip:hover{ color: var(--text); border-color: #4a4658; }
+  .chip.active{ background: var(--amber); color:#241804; border-color: var(--amber); }
+
+  /* ---------- list ---------- */
+  main{ max-width: var(--maxw); margin: 0 auto; padding: 36px 24px 80px; }
+  .month-label{
+    font-size: 13px; font-weight: 700; color: var(--amber);
+    letter-spacing: 0.08em; margin: 40px 0 14px;
+    padding-bottom: 8px; border-bottom: 1px solid var(--line);
+  }
+  .month-label:first-child{ margin-top: 0; }
+
+  .ticket{
+    position: relative;
+    display:grid; grid-template-columns: 108px 1fr auto;
+    gap: 18px; align-items:center;
+    background: var(--cream); color: var(--ink);
+    border-radius: 10px;
+    margin-bottom: 14px;
+    box-shadow: 0 1px 0 rgba(0,0,0,0.4);
+    transition: transform .18s ease, box-shadow .18s ease;
+  }
+  .ticket:hover{ transform: rotate(-0.4deg) translateY(-2px); box-shadow: 0 10px 24px rgba(0,0,0,0.35); }
+  .ticket.famous{ box-shadow: 0 0 0 2px var(--amber) inset; }
+
+  .t-date{
+    padding: 18px 4px 18px 20px;
+    text-align:center; border-right: 2px dashed rgba(32,28,34,0.28);
+  }
+  .t-date .day{ font-size: 30px; font-weight: 900; line-height:1; }
+  .t-date .mon{ font-size: 11px; font-weight:700; color:#6b6355; text-transform:uppercase; letter-spacing:.06em; }
+  .t-date .wk{ font-size: 11px; color:#8a8272; margin-top:2px; }
+
+  .t-mid{ padding: 16px 4px; min-width:0; }
+  .t-artist{
+    display:flex; align-items:center; gap:8px; flex-wrap:wrap;
+    font-size: 19px; font-weight: 900; margin-bottom: 6px;
+  }
+  .t-tag{
+    font-size: 10px; font-weight:700; padding: 2px 8px; border-radius: 999px;
+    background: var(--ink); color: var(--cream); letter-spacing:.03em;
+  }
+  .t-tag.star{ background: var(--magenta); color:#fff; }
+  .t-meta{ font-size: 13px; color:#5c5648; display:flex; flex-direction:column; gap:3px; }
+  .t-meta .row{ display:flex; gap:6px; }
+  .t-meta .k{ color:#948c78; min-width: 58px; flex-shrink:0; }
+
+  .t-side{
+    padding: 16px 20px 16px 4px; text-align:right;
+    display:flex; flex-direction:column; align-items:flex-end; gap:8px;
+    border-left: 2px dashed rgba(32,28,34,0.28);
+  }
+  .status{
+    font-size: 12px; font-weight: 700; padding: 4px 11px; border-radius: 999px;
+    white-space:nowrap;
+  }
+  .status.ok{ background: rgba(79,190,131,0.18); color:#1e6b41; }
+  .status.wait{ background: rgba(255,178,56,0.22); color:#8a5a05; }
+  .status.sold{ background: rgba(122,118,134,0.22); color:#4a4652; }
+  .status.tba{ background: rgba(92,88,102,0.14); color:#6b6558; }
+  .t-platform{ font-size: 12px; color:#7d7562; }
+
+  .ticket::before, .ticket::after{
+    content:""; position:absolute; width: 16px; height: 16px;
+    background: var(--bg); border-radius: 50%;
+    top: 50%; transform: translateY(-50%);
+  }
+  .ticket::before{ left: 100px; margin-left:-8px; }
+  .ticket::after{ right: calc(190px - 8px); }
+
+  @media (max-width: 620px){
+    .ticket{ grid-template-columns: 84px 1fr; }
+    .t-side{
+      grid-column: 1 / -1; flex-direction:row; align-items:center; justify-content:space-between;
+      border-left:none; border-top: 2px dashed rgba(32,28,34,0.28);
+      padding: 12px 16px;
+    }
+    .ticket::after{ display:none; }
+    .ticket::before{ left: 76px; }
+  }
+
+  footer{
+    max-width: var(--maxw); margin: 0 auto; padding: 20px 24px 60px;
+    color: var(--text-muted); font-size: 12.5px; border-top: 1px solid var(--line);
+  }
+  footer p{ margin: 6px 0; }
+  footer .src{ display:flex; flex-wrap:wrap; gap: 6px 14px; margin-top:10px; }
+</style>
+</head>
+<body>
+
+  <div class="topbar">
+    <div class="brand">近期台灣<span>演唱會</span>看板</div>
+    <div class="updated">資料整理至 <b>2026/09/11</b></div>
+  </div>
+
+  <section class="hero">
+    <div class="hero-inner">
+      <p class="hero-eyebrow">即將登台・國際巨星陣容</p>
+      <ul class="marquee">
+        <li><span class="rank">01</span><span class="name">BTS</span><span class="when">11/19、21、22・高雄世運主場館</span></li>
+        <li><span class="rank">02</span><span class="name">BIGBANG</span><span class="when">10/10–10/11・台北大巨蛋</span></li>
+        <li><span class="rank">03</span><span class="name">YOASOBI</span><span class="when">2027/1/9–1/10・台北大巨蛋</span></li>
+        <li><span class="rank">04</span><span class="name">IVE ・ TREASURE ・ Post Malone</span><span class="when">本月起陸續開唱</span></li>
+      </ul>
+      <p class="hero-note">下方整理近期確定來台開唱的重要場次，包含<strong>演出地點</strong>與<strong>售票／開賣時間</strong>；尚未公布的資訊會清楚標示「尚未公布」，而不是留白猜測。</p>
+    </div>
+  </section>
+
+  <div class="controls" id="filters">
+    <button class="chip active" data-f="all">全部場次</button>
+    <button class="chip" data-f="kpop">K-pop</button>
+    <button class="chip" data-f="jpop">日系</button>
+    <button class="chip" data-f="western">歐美</button>
+    <button class="chip" data-f="mando">華語</button>
+    <button class="chip" data-f="famous">只看焦點巨星</button>
+  </div>
+
+  <main id="list"></main>
+
+  <footer>
+    <p>本頁面聚焦於「近期即將登台」的大型場次，過往已完售或已落幕的演出不列入；每場演唱會實際票價、進場方式與加場資訊仍以官方售票平台公告為準。</p>
+    <p>建議售票前 15–30 分鐘登入售票系統完成身分驗證，避免開賣瞬間排隊超時。</p>
+    <div class="src">
+      <span>資料來源：拓元售票</span><span>KKTIX</span><span>寬宏售票</span><span>遠大售票</span><span>各主辦單位官方公告</span>
+    </div>
+  </footer>
+
+<script>
+const DATA = [
+  { month:"9月", day:"11–13", wk:"五–日", artist:"IVE", tags:["kpop"], famous:true,
+    venue:"台北小巨蛋", sale:"已於 4/3、4/8 上午11:00 開賣", platform:"拓元售票", status:"ok", statusText:"熱賣中" },
+  { month:"9月", day:"12", wk:"六 18:30", artist:"劉若英", tags:["mando"], famous:false,
+    venue:"高雄巨蛋", sale:"已於 7/18 中午12:00 開賣", platform:"拓元售票", status:"ok", statusText:"熱賣中" },
+  { month:"9月", day:"18–19", wk:"五–六 19:30", artist:"蕭煌奇", tags:["mando"], famous:false,
+    venue:"台北小巨蛋", sale:"已於 6/24 上午11:00 開賣", platform:"寬宏售票", status:"ok", statusText:"熱賣中" },
+  { month:"9月", day:"19", wk:"六", artist:"Post Malone", tags:["western"], famous:true,
+    venue:"高雄世運主場館", sale:"已開賣（Live Nation 會員預售後全面開賣）", platform:"寬宏售票 / Live Nation", status:"ok", statusText:"熱賣中" },
+  { month:"9月", day:"26", wk:"六", artist:"TREASURE", tags:["kpop"], famous:true,
+    venue:"高雄巨蛋", sale:"已開賣", platform:"拓元售票", status:"ok", statusText:"熱賣中" },
+
+  { month:"10月", day:"3", wk:"六", artist:"SUPER JUNIOR-83z", tags:["kpop"], famous:false,
+    venue:"高雄流行音樂中心", sale:"已於稍早開賣，目前無票", platform:"—", status:"sold", statusText:"已完售" },
+  { month:"10月", day:"10–11", wk:"六–日", artist:"BIGBANG", tags:["kpop"], famous:true,
+    venue:"台北大巨蛋", sale:"8/20 全面啟售", platform:"遠大售票", status:"ok", statusText:"熱賣中" },
+  { month:"10月", day:"31", wk:"六 19:00", artist:"藤井風", tags:["jpop"], famous:true,
+    venue:"高雄國家體育場", sale:"已於 6/20 中午12:00 開賣", platform:"KKTIX", status:"ok", statusText:"熱賣中" },
+  { month:"10–11月", day:"31–1", wk:"六–日 19:00", artist:"Vaundy", tags:["jpop"], famous:false,
+    venue:"台北小巨蛋", sale:"抽選登記已截止，目前無票", platform:"遠大售票", status:"sold", statusText:"已完售" },
+
+  { month:"11月", day:"19、21、22", wk:"四、六、日", artist:"BTS", tags:["kpop"], famous:true,
+    venue:"高雄世運主場館", sale:"已於 6/4 開賣", platform:"拓元售票", status:"ok", statusText:"熱賣中" },
+
+  { month:"2027年1月", day:"9–10", wk:"六–日", artist:"YOASOBI", tags:["jpop"], famous:true,
+    venue:"台北大巨蛋", sale:"9/16、9/17 開賣", platform:"尚未公布", status:"wait", statusText:"即將開賣" },
+
+  { month:"2027年2月", day:"27–28", wk:"六–日", artist:"BIGBANG（高雄場）", tags:["kpop"], famous:true,
+    venue:"高雄國家體育館", sale:"尚未公布", platform:"尚未公布", status:"tba", statusText:"尚未公布" },
+];
+
+const list = document.getElementById('list');
+
+function render(filter){
+  list.innerHTML = "";
+  let lastMonth = null;
+  const filtered = DATA.filter(d => filter === 'all' ? true : (filter === 'famous' ? d.famous : d.tags.includes(filter)));
+
+  if(filtered.length === 0){
+    list.innerHTML = '<p style="color:var(--text-muted);padding:20px 0;">目前沒有符合條件的場次。</p>';
+    return;
+  }
+
+  filtered.forEach(d => {
+    if(d.month !== lastMonth){
+      const h = document.createElement('div');
+      h.className = 'month-label';
+      h.textContent = d.month;
+      list.appendChild(h);
+      lastMonth = d.month;
+    }
+    const el = document.createElement('div');
+    el.className = 'ticket' + (d.famous ? ' famous' : '');
+    el.innerHTML = `
+      <div class="t-date">
+        <div class="day">${d.day}</div>
+        <div class="mon">${d.month.replace('年','/')}</div>
+        <div class="wk">${d.wk}</div>
+      </div>
+      <div class="t-mid">
+        <div class="t-artist">${d.artist}${d.famous ? '<span class="t-tag star">焦點巨星</span>' : ''}</div>
+        <div class="t-meta">
+          <div class="row"><span class="k">演出地點</span><span>${d.venue}</span></div>
+          <div class="row"><span class="k">售票時間</span><span>${d.sale}</span></div>
+        </div>
+      </div>
+      <div class="t-side">
+        <span class="status ${d.status}">${d.statusText}</span>
+        <span class="t-platform">${d.platform}</span>
+      </div>
+    `;
+    list.appendChild(el);
+  });
+}
+
+document.getElementById('filters').addEventListener('click', (e) => {
+  const btn = e.target.closest('.chip');
+  if(!btn) return;
+  document.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
+  btn.classList.add('active');
+  render(btn.dataset.f);
+});
+
+render('all');
+</script>
+
+</body>
+</html>
