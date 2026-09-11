@@ -1,8 +1,114 @@
 [
-  { "month":"9月", "day":"11–13", "wk":"五–日", "artist":"IVE", "tags":["kpop"], "famous":true, "venue":"台北小巨蛋", "sale":"已於 4/8 開賣", "platform":"拓元售票", "status":"ok", "statusText":"熱賣中", "url":"https://tixcraft.com/" },
-  { "month":"9月", "day":"19", "wk":"六", "artist":"Post Malone", "tags":["western"], "famous":true, "venue":"高雄世運主場館", "sale":"已開賣", "platform":"寬宏售票", "status":"ok", "statusText":"熱賣中", "url":"https://kham.com.tw/" },
-  { "month":"10月", "day":"3", "wk":"六", "artist":"SUPER JUNIOR-83z", "tags":["kpop"], "famous":false, "venue":"高雄流行音樂中心", "sale":"已售完", "platform":"遠大售票", "status":"sold", "statusText":"已完售", "url":"https://ticketplus.com.tw/" },
-  { "month":"10月", "day":"10–11", "wk":"六–日", "artist":"BIGBANG", "tags":["kpop"], "famous":true, "venue":"台北大巨蛋", "sale":"8/20 全面啟售", "platform":"遠大售票", "status":"ok", "statusText":"熱賣中", "url":"https://ticketplus.com.tw/" },
-  { "month":"10–11月", "day":"31–1", "wk":"六–日", "artist":"Vaundy", "tags":["jpop"], "famous":false, "venue":"台北小巨蛋", "sale":"登記已截止", "platform":"遠大售票", "status":"sold", "statusText":"已完售", "url":"https://ticketplus.com.tw/" },
-  { "month":"2027年1月", "day":"9–10", "wk":"六–日", "artist":"YOASOBI", "tags":["jpop"], "famous":true, "venue":"台北大巨蛋", "sale":"9/16 上午 11:00 開賣", "platform":"待公布", "status":"wait", "statusText":"即將開賣", "url":"https://kktix.com/" }
+  {
+    "month": "測試",
+    "day": "成功",
+    "wk": "系統",
+    "artist": "機器人自動更新測試 (時間: 10:59:41)",
+    "tags": [
+      "mando"
+    ],
+    "famous": true,
+    "venue": "GitHub 雲端主機",
+    "sale": "剛剛",
+    "platform": "自動化系統",
+    "status": "wait",
+    "statusText": "最新上架",
+    "url": "https://github.com"
+  },
+  {
+    "month": "9月",
+    "day": "11–13",
+    "wk": "五–日",
+    "artist": "IVE",
+    "tags": [
+      "kpop"
+    ],
+    "famous": true,
+    "venue": "台北小巨蛋",
+    "sale": "已於 4/8 開賣",
+    "platform": "拓元售票",
+    "status": "ok",
+    "statusText": "熱賣中",
+    "url": "https://tixcraft.com/"
+  },
+  {
+    "month": "9月",
+    "day": "19",
+    "wk": "六",
+    "artist": "Post Malone",
+    "tags": [
+      "western"
+    ],
+    "famous": true,
+    "venue": "高雄世運主場館",
+    "sale": "已開賣",
+    "platform": "寬宏售票",
+    "status": "ok",
+    "statusText": "熱賣中",
+    "url": "https://kham.com.tw/"
+  },
+  {
+    "month": "10月",
+    "day": "3",
+    "wk": "六",
+    "artist": "SUPER JUNIOR-83z",
+    "tags": [
+      "kpop"
+    ],
+    "famous": false,
+    "venue": "高雄流行音樂中心",
+    "sale": "已售完",
+    "platform": "遠大售票",
+    "status": "sold",
+    "statusText": "已完售",
+    "url": "https://ticketplus.com.tw/"
+  },
+  {
+    "month": "10月",
+    "day": "10–11",
+    "wk": "六–日",
+    "artist": "BIGBANG",
+    "tags": [
+      "kpop"
+    ],
+    "famous": true,
+    "venue": "台北大巨蛋",
+    "sale": "8/20 全面啟售",
+    "platform": "遠大售票",
+    "status": "ok",
+    "statusText": "熱賣中",
+    "url": "https://ticketplus.com.tw/"
+  },
+  {
+    "month": "10–11月",
+    "day": "31–1",
+    "wk": "六–日",
+    "artist": "Vaundy",
+    "tags": [
+      "jpop"
+    ],
+    "famous": false,
+    "venue": "台北小巨蛋",
+    "sale": "登記已截止",
+    "platform": "遠大售票",
+    "status": "sold",
+    "statusText": "已完售",
+    "url": "https://ticketplus.com.tw/"
+  },
+  {
+    "month": "2027年1月",
+    "day": "9–10",
+    "wk": "六–日",
+    "artist": "YOASOBI",
+    "tags": [
+      "jpop"
+    ],
+    "famous": true,
+    "venue": "台北大巨蛋",
+    "sale": "9/16 上午 11:00 開賣",
+    "platform": "待公布",
+    "status": "wait",
+    "statusText": "即將開賣",
+    "url": "https://kktix.com/"
+  }
 ]
