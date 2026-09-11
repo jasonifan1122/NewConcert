@@ -1,0 +1,36 @@
+name: 自動抓取演唱會資訊
+
+on:
+  schedule:
+    - cron: '0 2,14 * * *' # 每天台灣時間早上 10 點與晚上 10 點自動執行
+  workflow_dispatch: # 允許我們在網頁上手動點擊執行
+
+jobs:
+  scrape:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write # 賦予機器人寫入更新檔案的權限
+
+    steps:
+      - name: 1. 取得專案程式碼
+        uses: actions/checkout@v4
+
+      - name: 2. 設定 Python 環境
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      - name: 3. 安裝爬蟲所需套件
+        run: pip install requests
+
+      - name: 4. 執行爬蟲抓取最新資料
+        run: python scraper.py
+
+      - name: 5. 儲存變更並推送到網站
+        run: |
+          git config --global user.name "GitHub Actions Bot"
+          git config --global user.email "actions@github.com"
+          git add data.json
+          # 如果資料有更新才 commit，沒有更新就略過
+          git diff --quiet && git diff --staged --quiet || git commit -m "Auto update concert data"
+          git push
