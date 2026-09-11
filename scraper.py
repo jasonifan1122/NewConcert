@@ -1,42 +1,26 @@
-import requests
 import json
 import os
+from datetime import datetime
 
 def update_concerts():
-    url = "https://kktix.com/events.json"
-    headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)'}
+    # 取得現在的時間
+    now_time = datetime.now().strftime("%H:%M:%S")
     
-    try:
-        response = requests.get(url, headers=headers)
-        response.raise_for_status()
-        feed = response.json()
-    except Exception as e:
-        print(f"抓取失敗: {e}")
-        return
-
-    new_data = []
-    
-    # 這次我們不設任何關鍵字過濾條件，直接抓前 3 筆最新活動！
-    for entry in feed.get('entry', [])[:3]:
-        title = entry.get('title', '')
-        published = entry.get('published', '')
-        month_str = published[5:7] + "月" if len(published) >= 7 else "近期"
-        day_str = published[8:10] if len(published) >= 10 else "TBD"
-        
-        new_data.append({
-            "month": month_str,
-            "day": day_str,
-            "wk": "自動",
-            "artist": title[:20] + ("..." if len(title)>20 else ""), # 標題太長自動截斷
-            "tags": ["mando"], 
-            "famous": False,
-            "venue": "詳見 KKTIX 官網",
-            "sale": "系統自動抓取",
-            "platform": "KKTIX",
-            "status": "wait",
-            "statusText": "最新上架",
-            "url": entry.get('url', 'https://kktix.com/')
-        })
+    # 直接在程式內生成一筆假資料，完全不對外發送請求，保證不會被擋！
+    new_data = [{
+        "month": "測試",
+        "day": "成功",
+        "wk": "系統",
+        "artist": f"機器人自動更新測試 (時間: {now_time})",
+        "tags": ["mando"], 
+        "famous": True,
+        "venue": "GitHub 雲端主機",
+        "sale": "剛剛",
+        "platform": "自動化系統",
+        "status": "wait",
+        "statusText": "最新上架",
+        "url": "https://github.com"
+    }]
 
     # 讀取舊資料並替換
     old_data = []
@@ -52,7 +36,7 @@ def update_concerts():
     with open('data.json', 'w', encoding='utf-8') as f:
         json.dump(combined_data, f, ensure_ascii=False, indent=2)
     
-    print("成功強制寫入 3 筆測試資料！")
+    print(f"成功強制寫入測試資料！時間: {now_time}")
 
 if __name__ == "__main__":
     update_concerts()
