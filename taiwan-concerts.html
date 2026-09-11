@@ -255,43 +255,30 @@
   </footer>
 
 <script>
-const DATA = [
-  { month:"9月", day:"11–13", wk:"五–日", artist:"IVE", tags:["kpop"], famous:true,
-    venue:"台北小巨蛋", sale:"已於 4/3、4/8 上午11:00 開賣", platform:"拓元售票", status:"ok", statusText:"熱賣中" },
-  { month:"9月", day:"12", wk:"六 18:30", artist:"劉若英", tags:["mando"], famous:false,
-    venue:"高雄巨蛋", sale:"已於 7/18 中午12:00 開賣", platform:"拓元售票", status:"ok", statusText:"熱賣中" },
-  { month:"9月", day:"18–19", wk:"五–六 19:30", artist:"蕭煌奇", tags:["mando"], famous:false,
-    venue:"台北小巨蛋", sale:"已於 6/24 上午11:00 開賣", platform:"寬宏售票", status:"ok", statusText:"熱賣中" },
-  { month:"9月", day:"19", wk:"六", artist:"Post Malone", tags:["western"], famous:true,
-    venue:"高雄世運主場館", sale:"已開賣（Live Nation 會員預售後全面開賣）", platform:"寬宏售票 / Live Nation", status:"ok", statusText:"熱賣中" },
-  { month:"9月", day:"26", wk:"六", artist:"TREASURE", tags:["kpop"], famous:true,
-    venue:"高雄巨蛋", sale:"已開賣", platform:"拓元售票", status:"ok", statusText:"熱賣中" },
-
-  { month:"10月", day:"3", wk:"六", artist:"SUPER JUNIOR-83z", tags:["kpop"], famous:false,
-    venue:"高雄流行音樂中心", sale:"已於稍早開賣，目前無票", platform:"—", status:"sold", statusText:"已完售" },
-  { month:"10月", day:"10–11", wk:"六–日", artist:"BIGBANG", tags:["kpop"], famous:true,
-    venue:"台北大巨蛋", sale:"8/20 全面啟售", platform:"遠大售票", status:"ok", statusText:"熱賣中" },
-  { month:"10月", day:"31", wk:"六 19:00", artist:"藤井風", tags:["jpop"], famous:true,
-    venue:"高雄國家體育場", sale:"已於 6/20 中午12:00 開賣", platform:"KKTIX", status:"ok", statusText:"熱賣中" },
-  { month:"10–11月", day:"31–1", wk:"六–日 19:00", artist:"Vaundy", tags:["jpop"], famous:false,
-    venue:"台北小巨蛋", sale:"抽選登記已截止，目前無票", platform:"遠大售票", status:"sold", statusText:"已完售" },
-
-  { month:"11月", day:"19、21、22", wk:"四、六、日", artist:"BTS", tags:["kpop"], famous:true,
-    venue:"高雄世運主場館", sale:"已於 6/4 開賣", platform:"拓元售票", status:"ok", statusText:"熱賣中" },
-
-  { month:"2027年1月", day:"9–10", wk:"六–日", artist:"YOASOBI", tags:["jpop"], famous:true,
-    venue:"台北大巨蛋", sale:"9/16、9/17 開賣", platform:"尚未公布", status:"wait", statusText:"即將開賣" },
-
-  { month:"2027年2月", day:"27–28", wk:"六–日", artist:"BIGBANG（高雄場）", tags:["kpop"], famous:true,
-    venue:"高雄國家體育館", sale:"尚未公布", platform:"尚未公布", status:"tba", statusText:"尚未公布" },
-];
-
+let DATA = []; 
 const list = document.getElementById('list');
+
+async function loadData() {
+  try {
+    const response = await fetch('data.json?t=' + new Date().getTime());
+    if (!response.ok) throw new Error('找不到資料檔');
+    DATA = await response.json();
+    render('all'); 
+  } catch (error) {
+    list.innerHTML = '<p style="color:var(--text-muted);padding:20px 0;">目前無法取得最新售票資訊。</p>';
+  }
+}
 
 function render(filter){
   list.innerHTML = "";
-  let lastMonth = null;
-  const filtered = DATA.filter(d => filter === 'all' ? true : (filter === 'famous' ? d.famous : d.tags.includes(filter)));
+  let filtered = DATA.filter(d => {
+    if(filter === 'all') return true;
+    if(filter === 'wait') return d.status === 'wait';
+    return d.tags.includes(filter);
+  });
+
+  const priority = { 'wait': 1, 'ok': 2, 'tba': 3, 'sold': 4 };
+  filtered.sort((a, b) => priority[a.status] - priority[b.status]);
 
   if(filtered.length === 0){
     list.innerHTML = '<p style="color:var(--text-muted);padding:20px 0;">目前沒有符合條件的場次。</p>';
@@ -299,34 +286,37 @@ function render(filter){
   }
 
   filtered.forEach(d => {
-    if(d.month !== lastMonth){
-      const h = document.createElement('div');
-      h.className = 'month-label';
-      h.textContent = d.month;
-      list.appendChild(h);
-      lastMonth = d.month;
-    }
-    const el = document.createElement('div');
-    el.className = 'ticket' + (d.famous ? ' famous' : '');
-    el.innerHTML = `
+    const isWait = d.status === 'wait';
+    const isSold = d.status === 'sold';
+    const card = document.createElement('a');
+    card.href = d.url;
+    card.target = '_blank';
+    card.rel = 'noopener noreferrer';
+    card.className = `ticket ${isWait ? 'is-wait' : ''} ${isSold ? 'is-sold' : ''}`;
+    
+    card.innerHTML = `
       <div class="t-date">
         <div class="day">${d.day}</div>
-        <div class="mon">${d.month.replace('年','/')}</div>
-        <div class="wk">${d.wk}</div>
+        <div class="mon">${d.month}</div>
       </div>
       <div class="t-mid">
-        <div class="t-artist">${d.artist}${d.famous ? '<span class="t-tag star">焦點巨星</span>' : ''}</div>
+        <div class="t-artist">
+          ${d.artist}
+          ${isWait ? '<span class="t-tag soon">即將開賣</span>' : ''}
+          ${d.famous ? '<span class="t-tag">焦點巨星</span>' : ''}
+        </div>
         <div class="t-meta">
           <div class="row"><span class="k">演出地點</span><span>${d.venue}</span></div>
-          <div class="row"><span class="k">售票時間</span><span>${d.sale}</span></div>
+          <div class="row"><span class="k">售票時間</span><span style="${isWait ? 'color:#d35400;font-weight:bold;' : ''}">${d.sale}</span></div>
         </div>
       </div>
       <div class="t-side">
         <span class="status ${d.status}">${d.statusText}</span>
         <span class="t-platform">${d.platform}</span>
+        <span class="t-link-hint">前往官網 ↗</span>
       </div>
     `;
-    list.appendChild(el);
+    list.appendChild(card);
   });
 }
 
@@ -338,7 +328,7 @@ document.getElementById('filters').addEventListener('click', (e) => {
   render(btn.dataset.f);
 });
 
-render('all');
+loadData();
 </script>
 
 </body>
