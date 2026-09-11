@@ -1,49 +1,51 @@
-import cloudscraper
+import requests
+import xml.etree.ElementTree as ET
 import json
 import os
 
 def update_concerts():
-    print("啟動偽裝爬蟲，準備前往 KKTIX...")
-    # 使用 cloudscraper 建立一個會模擬真實瀏覽器的爬蟲
-    scraper = cloudscraper.create_scraper()
-    url = "https://kktix.com/events.json"
+    print("準備抓取最新演唱會新聞...")
+    
+    # 這是 Google 新聞的 RSS 網址，專門搜尋「台灣 演唱會」近 7 天的新聞
+    url = "https://news.google.com/rss/search?q=台灣+演唱會+when:7d&hl=zh-TW&gl=TW&ceid=TW:zh-Hant"
     
     try:
-        response = scraper.get(url)
+        # 新聞網站不防機器人，可以直接抓！
+        response = requests.get(url)
         response.raise_for_status()
-        feed = response.json()
+        
+        # Google 新聞回傳的是 XML 格式，我們用內建工具解析它
+        root = ET.fromstring(response.text)
     except Exception as e:
-        print(f"抓取失敗，可能防護等級提升了: {e}")
+        print(f"抓取失敗: {e}")
         return
 
     new_data = []
     
-    # 檢查抓下來的活動，篩選出跟演唱會或音樂有關的
-    for entry in feed.get('entry', []):
-        title = entry.get('title', '')
-        # 嚴格篩選：只抓取標題有這些字的活動
-        if '演唱' in title or '音樂' in title or 'LIVE' in title.upper():
-            published = entry.get('published', '')
-            month_str = published[5:7] + "月" if len(published) >= 7 else "近期"
-            day_str = published[8:10] if len(published) >= 10 else "TBD"
-            
-            new_data.append({
-                "month": month_str,
-                "day": day_str,
-                "wk": "自動",
-                "artist": title[:18] + ("..." if len(title)>18 else ""),
-                "tags": ["mando"], 
-                "famous": False,
-                "venue": "詳見 KKTIX 官網",
-                "sale": "系統自動抓取",
-                "platform": "KKTIX",
-                "status": "wait",
-                "statusText": "最新上架",
-                "url": entry.get('url', 'https://kktix.com/')
-            })
-            
-        if len(new_data) >= 3: # 每次最多只新增 3 筆
-            break
+    # 找到所有新聞項目 (item)，我們抓取前 3 篇最新的
+    for item in root.findall('.//item')[:3]:
+        title = item.find('title').text
+        link = item.find('link').text
+        pubDate = item.find('pubDate').text # 格式類似: Fri, 11 Sep 2026 12:00:00 GMT
+        
+        # 把新聞標題稍微縮短，避免把卡片撐破
+        short_title = title[:22] + ("..." if len(title) > 22 else "")
+        
+        # 將新聞包裝成你網站的卡片格式
+        new_data.append({
+            "month": "新聞",
+            "day": "快報",
+            "wk": "自動",
+            "artist": short_title,
+            "tags": ["mando"], 
+            "famous": False,
+            "venue": "新聞情報，點擊前往查看",
+            "sale": pubDate[5:16], # 擷取出日期的部分
+            "platform": "Google 新聞",
+            "status": "wait",
+            "statusText": "最新上架",
+            "url": link
+        })
 
     # 讀取舊資料並替換
     old_data = []
@@ -51,7 +53,7 @@ def update_concerts():
         with open('data.json', 'r', encoding='utf-8') as f:
             old_data = json.load(f)
 
-    # 清除舊的自動抓取紀錄 (包含我們剛剛的測試卡片)
+    # 清除舊的自動抓取紀錄（把上次失敗卡在裡面的測試資料也清掉）
     old_data = [d for d in old_data if d.get('statusText') != '最新上架']
     
     # 合併後寫入
@@ -59,7 +61,7 @@ def update_concerts():
     with open('data.json', 'w', encoding='utf-8') as f:
         json.dump(combined_data, f, ensure_ascii=False, indent=2)
     
-    print(f"成功突破！抓到了 {len(new_data)} 筆真實音樂活動。")
+    print(f"成功突破！抓到了 {len(new_data)} 篇演唱會新聞。")
 
 if __name__ == "__main__":
     update_concerts()
