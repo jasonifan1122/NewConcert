@@ -19,22 +19,6 @@
     "month": "新聞",
     "day": "快報",
     "wk": "自動",
-    "artist": "Himegoto Live in Taipe...",
-    "tags": [
-      "mando"
-    ],
-    "famous": false,
-    "venue": "新聞情報，點擊前往查看",
-    "sale": "20 Sep 2026",
-    "platform": "Google 新聞",
-    "status": "wait",
-    "statusText": "最新上架",
-    "url": "https://news.google.com/rss/articles/CBMiWEFVX3lxTE5TNWkwS0tlQ0haeWFVajlLRTJ3M0dxYWlQd2d1MVhZaVh1VE5wMzRIRFhWQm92Um5ORzVDQnY2c0J1NV9VNHhhWVcwc1BhTVQxMzJuT3RjWG4?oc=5"
-  },
-  {
-    "month": "新聞",
-    "day": "快報",
-    "wk": "自動",
     "artist": "2026演唱會資訊售票日期一次看！LANY、...",
     "tags": [
       "mando"
@@ -46,6 +30,22 @@
     "status": "wait",
     "statusText": "最新上架",
     "url": "https://news.google.com/rss/articles/CBMiqwNBVV95cUxPbGItQ0NkY3QzV0FuUGpTZVpISW1wbUN3VGZfNGVDTkJiSTBQYlZraExBNFBkQ214bnhYZklZWEtLb3A1a0tSR3FzRXhmMHpYRUhUWURpSGJwLU84eTI2VklwMFluZVdvNF94Rk5LbktDMm1RbC0tLXRjeE05NlVrY1FPQlhHUXlQZXE3MkFxQ3dOOWRObHdBQW9VWVlnTlZnZ0hMbnZ0RldmaV8ta05HM0lOaU9pbTIyNEpJdThDbGpZSDllVHdEUmJkcW9WTEowWGR0aUJvTi1TZzRlRnRic1FTdU53aTUwMDYtdGR5OWs0LXRodFQ2RDFHcUdGODgzZ1NrY0xXTERjMFEtdkpWVkNlWWwydG5ZdWlYN2JHWVd2aXYya19adTdmZXhmYUtJaE9LVV9POUtKT3g3YXpLck9qSG5ua3JUby1xUmRZM0cydmZTRmRpVVkxVHNCU0p3a183T2lrOWoxUDBrejRPcDNYazNlUkNPU19SMjM1c0lLV0VVLWJiTlkwVTJSZ0xmZkRWNm5fYzNWTW96TlJPc3FYYnpIbnFRSnhB?oc=5"
+  },
+  {
+    "month": "新聞",
+    "day": "快報",
+    "wk": "自動",
+    "artist": "Himegoto Live in Taipe...",
+    "tags": [
+      "mando"
+    ],
+    "famous": false,
+    "venue": "新聞情報，點擊前往查看",
+    "sale": "20 Sep 2026",
+    "platform": "Google 新聞",
+    "status": "wait",
+    "statusText": "最新上架",
+    "url": "https://news.google.com/rss/articles/CBMiWEFVX3lxTE5TNWkwS0tlQ0haeWFVajlLRTJ3M0dxYWlQd2d1MVhZaVh1VE5wMzRIRFhWQm92Um5ORzVDQnY2c0J1NV9VNHhhWVcwc1BhTVQxMzJuT3RjWG4?oc=5"
   },
   {
     "month": "9月",
