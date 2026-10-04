@@ -3,22 +3,6 @@
     "month": "新聞",
     "day": "快報",
     "wk": "自動",
-    "artist": "浜野はるき LIVE TOUR 2026 “...",
-    "tags": [
-      "mando"
-    ],
-    "famous": false,
-    "venue": "新聞情報，點擊前往查看",
-    "sale": "27 Sep 2026",
-    "platform": "Google 新聞",
-    "status": "wait",
-    "statusText": "最新上架",
-    "url": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE85QWRMVlBkbU5KdUFpTUltWjdpb0d0Yy00R2NuSElkeElSLTBoS0NHaS1VVjJHZ1ViU3dqWXFQcW1SMGMxbmp2a2ZibG9CcWRjZ3dNU1luVQ?oc=5"
-  },
-  {
-    "month": "新聞",
-    "day": "快報",
-    "wk": "自動",
     "artist": "2026演唱會資訊售票日期一次看！PLAVE...",
     "tags": [
       "mando"
@@ -46,6 +30,22 @@
     "status": "wait",
     "statusText": "最新上架",
     "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTE5yajNhNFUwSkRjWWhVQVh2M2J3WlhhZFZMN0dLVUNJTm1PYUs3eEtSSEJyLTQ5S3hfN0NQSFVHNlByT2k0Q0dFWHRJNTJsRS0wQW90bXZRaE1tejItUy1mdGRpbVhtNng5Q2psN0htcjh2d0k5Y1NxVEVqUTRNRFE?oc=5"
+  },
+  {
+    "month": "新聞",
+    "day": "快報",
+    "wk": "自動",
+    "artist": "明天會員預售開賣！T.O.P高雄巨蛋演唱會兩...",
+    "tags": [
+      "mando"
+    ],
+    "famous": false,
+    "venue": "新聞情報，點擊前往查看",
+    "sale": "02 Oct 2026",
+    "platform": "Google 新聞",
+    "status": "wait",
+    "statusText": "最新上架",
+    "url": "https://news.google.com/rss/articles/CBMirAFBVV95cUxOdUNKX2tDWnQzakdFdGdqb3JSS3RfVTBKMkJnbm53ZGdEbnpKWDR6ekozSzB6UWViQU84QTNlWFR5NC1kdlZxV2FWeUt5RWQ4ZDZiYldLSDFFRjlhOXZPdVdxaFdQNVhHS1IzQWRVLXk2WTFLMVpsZHlkYm9JeC1jQkRSXzZKeWVWMkxXbi0xWGw0alktalFwenRWU1MwUlNtZzNHaWxLd2g4SEFw?oc=5"
   },
   {
     "month": "9月",
