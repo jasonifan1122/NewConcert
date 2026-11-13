@@ -3,6 +3,38 @@
     "month": "新聞",
     "day": "快報",
     "wk": "自動",
+    "artist": "商周-2026演唱會時間表》11、12月卡司...",
+    "tags": [
+      "mando"
+    ],
+    "famous": false,
+    "venue": "新聞情報，點擊前往查看",
+    "sale": "11 Nov 2026",
+    "platform": "Google 新聞",
+    "status": "wait",
+    "statusText": "最新上架",
+    "url": "https://news.google.com/rss/articles/CBMiYkFVX3lxTE15bnBEUjkxTU9lY0kyQXY1VXpvbWZkb2lkVUotUFpRblI5NUtBX3FLUFBINlpzR045dG9ubnhBZ210dXdja3d0dDU0a0RmZGczMkRxVjRxV01HUnp5UDgzeDRB?oc=5"
+  },
+  {
+    "month": "新聞",
+    "day": "快報",
+    "wk": "自動",
+    "artist": "AKANE YONEZAWA \"Black ...",
+    "tags": [
+      "mando"
+    ],
+    "famous": false,
+    "venue": "新聞情報，點擊前往查看",
+    "sale": "13 Nov 2026",
+    "platform": "Google 新聞",
+    "status": "wait",
+    "statusText": "最新上架",
+    "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE1HcmdQRUpiUndqZDBRbFIyS0FKVC1naVVmSy11LVNQM21KMDZHTlJGNmFEUTRvdUY2X0xBSDRDbVJuWENFRzFxOW1EQ0lkWVM1ekk3bEc3ZTd0dw?oc=5"
+  },
+  {
+    "month": "新聞",
+    "day": "快報",
+    "wk": "自動",
     "artist": "2026韓女團、女歌手台灣演唱會資訊！鄭恩地...",
     "tags": [
       "mando"
@@ -14,38 +46,6 @@
     "status": "wait",
     "statusText": "最新上架",
     "url": "https://news.google.com/rss/articles/CBMi0ANBVV95cUxQcFBSWWdIWTdPUDlfMHpjdGtsUGIyRUdrMU5WQ0RXVWRBeVlLYk1OdnhNVUFKUHhROWxiMmhGOUJpSVRsV1RkVTZaTktNY3lIbUJPWmlvUDlFbTR5OEdHN0hXYmMxRmY4UWtUQkQzemR0UHBfTmF6enlQN1VWdXVRamNlTS1rbndGamppT3h5Z1BqUFBpdGpwY2RIVE9EMmNEWXNvdkVtMFhheVkteTlFOGh0SGdHcUNvTnhTTXBLci1OMzVOWHRkdGtiTkptMjBsWk42U1NCcWI4c0RiZk0yZ2JseGtvNXhNRVR2SVJxZjR1cEFRQVBVYlJOYnE3bkVfNDNiRWcxZUFZUFREbFg4MXp2Sm1DZF9pa0syd3JOQVNIbnVTbmhGVnNpUzJWOHNLaC0zUFlTYTd6MGJhZy1ZbHNRRkc3S3AyUldMNWtJaF9RRUZKcWRUUndhYzFkNXFlZ0NCNlJDN1Eta3liTzNFQjdkVk85SWMxektaOEVmdS1QalB0OEZ5bkdoNXdWUFJHNjV2bC00XzVoVjNhby15bFBVMGQtNHBENU1mSUIwWHVXUXpsNzY0RGtRZEhmSXREdXZqb0pZWGl0YVZwdDBCZw?oc=5"
-  },
-  {
-    "month": "新聞",
-    "day": "快報",
-    "wk": "自動",
-    "artist": "KATSEYE演唱會6階段搶票懶人包！票價、...",
-    "tags": [
-      "mando"
-    ],
-    "famous": false,
-    "venue": "新聞情報，點擊前往查看",
-    "sale": "10 Nov 2026",
-    "platform": "Google 新聞",
-    "status": "wait",
-    "statusText": "最新上架",
-    "url": "https://news.google.com/rss/articles/CBMiogFBVV95cUxOQ25MZi1scUtUNGNMdzM5MUR4OGpKZGJrZlFLNHVxa0NWT0ZaWXlyeUg0NWJuN2ZvdGwxZlc3RHMycEZuWkt6S2xGTGgxbnpZZXBVQWlCVHl5NDVyaGx2WjR3THZhd05hOUpScjNqX2N0dDNCaXNIZ3NpZ1BNQnZES1I5eVRBd2p3emk4MGZiZ2tSZlVCY1BNRS01SXZBR2JFX3c?oc=5"
-  },
-  {
-    "month": "新聞",
-    "day": "快報",
-    "wk": "自動",
-    "artist": "Katseye演唱會11/13拓元開放售票！...",
-    "tags": [
-      "mando"
-    ],
-    "famous": false,
-    "venue": "新聞情報，點擊前往查看",
-    "sale": "13 Nov 2026",
-    "platform": "Google 新聞",
-    "status": "wait",
-    "statusText": "最新上架",
-    "url": "https://news.google.com/rss/articles/CBMimwFBVV95cUxQQUk2aDV1U1RDQnBTVkt6VWR1NmlCd2xBZEZyMkhDTTk2SzdITGowX3AtSFczTXBfaWIwYlFFNVlIYXRMd3ZDYU1ZNy1RUU5MaW9PQWdtaWJ1eURGVEpyQWV1SWpJOEdzSG90Z1hZR2pYVTZRaENaa01BLWdyMkVrdVkwOFNNRVVkVG1zOEJzUnJNOGcxVjZuVURwNA?oc=5"
   },
   {
     "month": "9月",
