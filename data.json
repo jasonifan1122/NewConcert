@@ -19,22 +19,6 @@
     "month": "新聞",
     "day": "快報",
     "wk": "自動",
-    "artist": "AKANE YONEZAWA \"Black ...",
-    "tags": [
-      "mando"
-    ],
-    "famous": false,
-    "venue": "新聞情報，點擊前往查看",
-    "sale": "15 Nov 2026",
-    "platform": "Google 新聞",
-    "status": "wait",
-    "statusText": "最新上架",
-    "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE1HcmdQRUpiUndqZDBRbFIyS0FKVC1naVVmSy11LVNQM21KMDZHTlJGNmFEUTRvdUY2X0xBSDRDbVJuWENFRzFxOW1EQ0lkWVM1ekk3bEc3ZTd0dw?oc=5"
-  },
-  {
-    "month": "新聞",
-    "day": "快報",
-    "wk": "自動",
     "artist": "Katseye演唱會11/13拓元開放售票！...",
     "tags": [
       "mando"
@@ -46,6 +30,22 @@
     "status": "wait",
     "statusText": "最新上架",
     "url": "https://news.google.com/rss/articles/CBMimwFBVV95cUxQQUk2aDV1U1RDQnBTVkt6VWR1NmlCd2xBZEZyMkhDTTk2SzdITGowX3AtSFczTXBfaWIwYlFFNVlIYXRMd3ZDYU1ZNy1RUU5MaW9PQWdtaWJ1eURGVEpyQWV1SWpJOEdzSG90Z1hZR2pYVTZRaENaa01BLWdyMkVrdVkwOFNNRVVkVG1zOEJzUnJNOGcxVjZuVURwNA?oc=5"
+  },
+  {
+    "month": "新聞",
+    "day": "快報",
+    "wk": "自動",
+    "artist": "KATSEYE演唱會6階段搶票懶人包！票價、...",
+    "tags": [
+      "mando"
+    ],
+    "famous": false,
+    "venue": "新聞情報，點擊前往查看",
+    "sale": "10 Nov 2026",
+    "platform": "Google 新聞",
+    "status": "wait",
+    "statusText": "最新上架",
+    "url": "https://news.google.com/rss/articles/CBMiogFBVV95cUxOQ25MZi1scUtUNGNMdzM5MUR4OGpKZGJrZlFLNHVxa0NWT0ZaWXlyeUg0NWJuN2ZvdGwxZlc3RHMycEZuWkt6S2xGTGgxbnpZZXBVQWlCVHl5NDVyaGx2WjR3THZhd05hOUpScjNqX2N0dDNCaXNIZ3NpZ1BNQnZES1I5eVRBd2p3emk4MGZiZ2tSZlVCY1BNRS01SXZBR2JFX3c?oc=5"
   },
   {
     "month": "9月",
