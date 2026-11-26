@@ -19,22 +19,6 @@
     "month": "新聞",
     "day": "快報",
     "wk": "自動",
-    "artist": "IU宣布2027世巡場次！2月高雄世運、4月...",
-    "tags": [
-      "mando"
-    ],
-    "famous": false,
-    "venue": "新聞情報，點擊前往查看",
-    "sale": "22 Nov 2026",
-    "platform": "Google 新聞",
-    "status": "wait",
-    "statusText": "最新上架",
-    "url": "https://news.google.com/rss/articles/CBMib0FVX3lxTFBJMDU2UXoxdGk0UUlPaWlEQVUtQWg1YjVHZTZCV3R1OERqY1p5WWpSMndzYTF3NWRpNG5GOUlWTWNKbDAzNmpqNmR1dzAzWEpPRjF0bDNDMkZnMXAwMDB2Q1ZvQVo1a2c3V00tcnhjbw?oc=5"
-  },
-  {
-    "month": "新聞",
-    "day": "快報",
-    "wk": "自動",
     "artist": "阿信台北小巨蛋演唱會11/25開賣！拓元售票...",
     "tags": [
       "mando"
@@ -46,6 +30,22 @@
     "status": "wait",
     "statusText": "最新上架",
     "url": "https://news.google.com/rss/articles/CBMiYkFVX3lxTE0zaHVWeFpNWEsyR1RCejRTc3FKYjRmaGIzWEFMdnBTN08wcDFXUzlkWEp1YkhZZ3h2dHdoYWhOZWpHVnZVYU9YTW1GMjJCQUs1RDhoLU5aSzFRblVoY2hyenZR?oc=5"
+  },
+  {
+    "month": "新聞",
+    "day": "快報",
+    "wk": "自動",
+    "artist": "IU宣布2027世巡場次！2月高雄世運、4月...",
+    "tags": [
+      "mando"
+    ],
+    "famous": false,
+    "venue": "新聞情報，點擊前往查看",
+    "sale": "22 Nov 2026",
+    "platform": "Google 新聞",
+    "status": "wait",
+    "statusText": "最新上架",
+    "url": "https://news.google.com/rss/articles/CBMib0FVX3lxTFBJMDU2UXoxdGk0UUlPaWlEQVUtQWg1YjVHZTZCV3R1OERqY1p5WWpSMndzYTF3NWRpNG5GOUlWTWNKbDAzNmpqNmR1dzAzWEpPRjF0bDNDMkZnMXAwMDB2Q1ZvQVo1a2c3V00tcnhjbw?oc=5"
   },
   {
     "month": "9月",
